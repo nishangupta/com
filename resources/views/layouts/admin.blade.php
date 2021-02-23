@@ -46,6 +46,7 @@
       <script src="{{asset('plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
       <script src="{{asset('plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
       
+      <script src={{asset('js/admin.js')}}></script>
       @stack('js')      
     </body>
 </html>

@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -70,8 +69,7 @@ class ProductController extends Controller
 
         });
 
-        Alert::toast('Product created successfully!','success');
-        return redirect(route('product.index'));
+        return redirect(route('product.index'))->with('success','Product created');
     }
 
     public function edit(Product $product)
@@ -124,79 +122,12 @@ class ProductController extends Controller
             ]);
         }
 
-        Alert::toast('Product updated', 'success');
-        return redirect(route('product.index'));
+        return redirect(route('product.index'))->with('success','Product updated');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        Alert::toast('Product Deleted Successfully!', 'success');
-        return redirect()->route('product.index');
-    }
-
-    private function productSave($product, $request)
-    {
-        $product->user_id = auth()->user()->id;
-        $product->title = $request->title;
-        $product->slug = Str::slug($request->title);
-        $product->subCategory = $request->subCategory;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->sale_price = $request->sale_price;
-        $product->stock = $request->stock;
-        $product->product_code = Str::upper(Str::random(6));
-
-        if ($request->warranty) {
-            $product->warranty = $request->warranty;
-        }
-        if ($request->color) {
-            $product->color = $request->color;
-        }
-        if ($request->size) {
-            $product->size = $request->size;
-        }
-        if ($request->brand) {
-            $product->brand = $request->brand;
-        }
-        $product->onSale = $request->onSale ? 1 : 0;
-        $product->live = $request->live ? 1 : 0;
-
-        if ($product->save()) {
-            return true;
-        }
-        return false;
-    }
-
-    private function productUpdate($product, $request)
-    {
-        $product->title = $request->title;
-        $product->slug = Str::slug($request->title);
-        $product->subCategory = $request->subCategory;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->sale_price = $request->sale_price;
-        $product->stock = $request->stock;
-
-        if ($request->warranty) {
-            $product->warranty = $request->warranty;
-        }
-        if ($request->color) {
-            $product->color = $request->color;
-        }
-        if ($request->size) {
-            $product->size = $request->size;
-        }
-        if ($request->brand) {
-            $product->brand = $request->brand;
-        }
-
-        $product->onSale = $request->onSale ? 1 : 0;
-        $product->live = $request->live ? 1 : 0;
-
-        if ($product->save()) {
-            return true;
-        }
-        return false;
+        return redirect()->route('product.index')->with('success','Product deleted');
     }
 }

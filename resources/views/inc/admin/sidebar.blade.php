@@ -25,21 +25,45 @@
           <a href="#" class="nav-link">
             <i class="nav-icon far fas fa-swatchbook"></i>
             <p>
-              Products
+              Product
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{route('course.create')}}" class="nav-link">
+              <a href="{{route('product.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Products</p>
+                <p>Add Product</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{route('course.index')}}" class="nav-link">
+              <a href="{{route('product.index')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Manage Products</p>
+                <p>Manage Product</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon far fas fa-swatchbook"></i>
+            <p>
+              Category
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('category.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('category.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Manage Category</p>
               </a>
             </li>
           </ul>

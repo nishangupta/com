@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\CustomerQuestion;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerQuestionController extends Controller
 {
@@ -40,8 +39,7 @@ class CustomerQuestionController extends Controller
         foreach ($questions as $order) {
             $order->delete();
         }
-        Alert::toast('Removed', 'success');
-        return redirect(route('customerQuestion.adminView'));
+        return redirect(route('customerQuestion.adminView'))->with('success','deleted');
     }
 
     //for users

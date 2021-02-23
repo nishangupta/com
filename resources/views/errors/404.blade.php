@@ -8,7 +8,7 @@
         <h2 class="error mx-auto">404</h2>
         <p class="lead mb-5">Page Not Found</p>
         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-        <a href="{{route('home.index')}}">&larr; Back to Home</a>
+        <a href="{{route('shop.index')}}">&larr; Back to Home</a>
       </div>
     </div>
   

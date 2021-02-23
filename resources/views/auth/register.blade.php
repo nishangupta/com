@@ -1,91 +1,66 @@
-@extends('layouts.auth')
+@extends('layouts.shop')
 
-@section('content')
-<div class="register-box">
-  <div class="register-logo">
-    <a href="{{route('home.index')}}"><b>Register</b></a>
-  </div>
+@section('content')	<main id="main" class="main-site left-sidebar">
 
-  <div class="card">
-    <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new account</p>
+  <div class="container">
 
-      <x-input-error />
-      @if (session('status'))
-      <div class="mb-4 text-info text-center">
-              {{ session('status') }}
-          </div>
-      @endif
-      <form action="{{route('register')}}" method="POST">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name" value="{{old('name')}}" name="name" required autofocus>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" value="{{old('email')}}" name="email" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree" name="remember" required> 
-              <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4 mt-2">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      {{-- <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i>
-          Sign up using Google
-        </a>
-      </div> --}}
-
-      <a href="{{route('login')}}" class="text-center">I already have a account</a>
-
-      <p class="mb-0 mt-2">
-        <a href="{{route('home.index')}}" class="text-center">Go back</a>
-      </p>
+    <div class="wrap-breadcrumb">
+      <ul>
+        <li class="item-link"><a href="#" class="link">home</a></li>
+        <li class="item-link"><span>Register</span></li>
+      </ul>
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
-</div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">		
+        <x-input-error/>
+        <x-alert-msg/>
+        
+        <div class=" main-content-area">
+          <div class="wrap-login-item ">
+            <div class="register-form form-item ">
+              <a class="link-function" href="{{route('login')}}" title="Forgotten password?">Already registerd, Login ?</a>
+
+              <form class="form-stl" action="{{route('register')}}" name="frm-login" method="POST" >
+                @csrf
+
+                <fieldset class="wrap-title">
+                  <h3 class="form-title">Create an account</h3>
+                  <h4 class="form-subtitle">Personal infomation</h4>
+                </fieldset>									
+                <fieldset class="wrap-input">
+                  <label for="frm-reg-lname">Name*</label>
+                  <input type="text" id="frm-reg-lname" name="name" placeholder="Full name*" required autofocus>
+                </fieldset>
+                <fieldset class="wrap-input">
+                  <label for="frm-reg-email">Email Address*</label>
+                  <input type="email" id="frm-reg-email" name="email" placeholder="Email address" required>
+                </fieldset>
+                <fieldset class="wrap-functions ">
+                  <label class="remember-field">
+                    <input name="remember" id="new-letter" value="remember" type="checkbox"><span>Sign Up for Newsletter</span>
+                  </label>
+                </fieldset>
+                <fieldset class="wrap-title">
+                  <h3 class="form-title">Login Information</h3>
+                </fieldset>
+                <fieldset class="wrap-input item-width-in-half left-item ">
+                  <label for="frm-reg-pass">Password *</label>
+                  <input type="password" id="frm-reg-pass" name="password" placeholder="Password" required>
+                </fieldset>
+                <fieldset class="wrap-input item-width-in-half ">
+                  <label for="frm-reg-cfpass">Confirm Password *</label>
+                  <input type="password" id="frm-reg-cfpass" name="password_confirmation" placeholder="Confirm Password" required>
+                </fieldset>
+                <input type="submit" class="btn btn-sign" value="Register" name="register">
+
+              </form>
+
+            </div>											
+          </div>
+        </div><!--end main products area-->		
+      </div>
+    </div><!--end row-->
+
+  </div><!--end container-->
+</main>
 @endsection

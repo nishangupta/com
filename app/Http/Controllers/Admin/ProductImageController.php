@@ -43,14 +43,6 @@ class ProductImageController extends Controller
         });
     }
 
-    //$id -- Product id
-    public function show(Product $id)
-    {
-        return view('admin.product.show')->with([
-            'product' => $id
-        ]);
-    }
-
     //$id is the Product Image id
     public function destroy(ProductImage $id)
     {

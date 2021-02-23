@@ -20,9 +20,10 @@ use App\Http\Controllers\Admin\CustomerQuestionController;
 Route::group(['middleware'=>['auth','role:admin'],'prefix'=>'/admin'],function(){
 
   Route::get('/',[AdminController::class,'index'])->name('admin.index');
+
+  Route::resource('/category', CategoryController::class);
   
   Route::resource('/product', ProductController::class);
-  Route::get('/product/{id}/image', [ProductImageController::class, 'show'])->name('productImage.show'); 
   Route::get('/product/get/image/{id}', [ProductImageController::class, 'index'])->name('productImage.index');
   Route::post('/product/image/{id}', [ProductImageController::class, 'store'])->name('productImage.store');
   Route::delete('/product/{id}/image', [ProductImageController::class, 'destroy'])->name('productImage.destroy');
@@ -45,8 +46,6 @@ Route::group(['middleware'=>['auth','role:admin'],'prefix'=>'/admin'],function()
   Route::get('/user-management/get-all-users', [UserManagementController::class, 'getAllUsers'])->name('userManagement.getAllUsers');
 
   Route::resource('/carousel', CarouselController::class);
-
-  Route::resource('/category', CategoryController::class);
 
   Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 

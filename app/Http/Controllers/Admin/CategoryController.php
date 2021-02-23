@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -44,8 +43,7 @@ class CategoryController extends Controller
             'slug'=>Str::slug($request->name),
         ]);
 
-        Alert::toast('Category created', 'success');
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category created!');
     }
 
     public function edit(Category $category)
@@ -77,18 +75,15 @@ class CategoryController extends Controller
             'slug'=>Str::slug($request->name),
         ]);
         }catch(\Exception $e){
-            Alert::toast('Something went wrong');
             return redirect()->back();
         }
-        Alert::toast('Category updated', 'success');
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category updated');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        Alert::toast('Category Deleted', 'success');
-        return redirect(route('category.index'));
+        return redirect(route('category.index'))->with('success','Category deleted');
     }
 
 }
